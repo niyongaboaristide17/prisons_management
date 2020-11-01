@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+        <h:outputScript name="jquery-3.5.1.js"/>
+    </h:head>
+    <h:body>
+        <ui:decorate template="supervisorLayout.xhtml">
+            <ui:define name="myContent">
+                <div class="container">
+                    <table class="table">
+                        <thead class="bg-dark text-light">
+                            <tr>
+                                <th></th>
+                                <th>PRISONER ID</th>
+                                <th>NAME</th>
+                                <th>ARRIVAL DATE</th>
+                                <th>RELEASE DATE</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ui:repeat value="#{prisonerModel.prisonerList(superv.prison.prisonCode)}" var="prisoner">
+
+                                <tr class="#{prisoner.prisonerStatus == 'JAILED'?'bg-light':'bg-success'}">
+                                    <td>
+                                        <div data-toggle="modal" data-target="##{prisoner.prisonerId}">
+                                            <h:graphicImage class="rounded-circle" width="50" height="50" value="/resources/prisonerprofileImages/#{prisoner.profilePicture}"/>
+                                        </div>
+
+                                    </td>
+                                    <td>#{prisoner.prisonerId}</td>
+                                    <td>#{prisoner.prisonerName}</td>
+                                    <td>#{prisoner.arrivalDate}</td>
+                                    <td>#{prisoner.releaseDate}</td>
+                                    <td>#{prisoner.prisonerStatus}</td>
+                                </tr>
+                                <div class="modal fade" id="#{prisoner.prisonerId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">PRISONER DETAILS</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="float-left">
+                                                    <dl>
+                                                        <dt>#{prisoner.prisonerName}</dt>
+                                                        <dt>#{prisoner.crime.crimeName}</dt>
+                                                        <dd>#{prisoner.crime.crimeDetails}</dd>
+                                                        <dt>cell number: #{prisoner.cellNumber}</dt>
+                                                        <dt>Status: #{prisoner.prisonerStatus}</dt>
+                                                    </dl>
+                                                </div>
+                                                <h:graphicImage class="rounded float-right" width="150" height="auto" value="/resources/prisonerprofileImages/#{prisoner.profilePicture}"/>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ui:repeat>
+                        </tbody>
+                    </table>
+
+                </div>
+            </ui:define>
+        </ui:decorate>
+        <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
+    </h:body>
+</html>

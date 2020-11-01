@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+        <h:outputScript name="jquery-3.5.1.js"/>
+        <h:outputStylesheet name="fontawesome/css/all.css"/>
+
+    </h:head>
+    <h:body>
+        <div class="row my-0">
+            <div class="col-12 col-sm-4 col-md-2 bg-dark mx-0 my-0 pr-0 pb-2" id="side">
+                <h4 class="text-light">Supervisor <span class="badge badge-light">#{superv.username}</span></h4>
+                <h4 class="text-white">#{superv.prison.prisonName} Prison</h4>
+                <h6 class="text-light">Panel</h6>
+                <div id="prisoner" class="bg-white p-2 border border-dark">
+                    <span class="text-dark">Manage</span>
+                    <span class="text-dark">Prisoner</span>
+                </div>
+                <div id="prisonerC">
+                    <h:form>
+                        <h:commandLink action="/supervisor/addPrisoner.xhtml?faces-redirect=true" styleClass="text-light" value="Add Prisoner"/><br/>
+                        <h:commandLink action="/supervisor/viewPrisoner.xhtml?faces-redirect=true" styleClass="text-light" value="View Prisoner"/>
+                    </h:form>
+                </div>
+                <div id="guard" class="bg-white p-2 border border-dark">
+                    <span class="text-dark">Manage</span>
+                    <span class="text-dark">Guard</span>
+                </div>
+                <div id="guardC">
+                    <h:form>
+                        <h:commandLink action="addGuard.xhtml?faces-redirect=true" styleClass="text-light" value="Add Guard"/><br/>
+                        <h:commandLink action="viewGuard.xhtml?faces-redirect=true" styleClass="text-light" value="View Guard"/>
+                    </h:form>
+                </div>
+                <div id="visitor" class="bg-white p-2 border border-dark">
+                    <span class="text-dark">Manage</span>
+                    <span class="text-dark">visitor</span>
+                </div>
+                <div id="visitorC">
+                    <h:form>
+                        <h:commandLink action="addGuard.xhtml?faces-redirect=true" styleClass="text-light" value="Add Guard"/><br/>
+                    </h:form>
+                </div>
+                <h:form>
+                    <h:commandButton value="logout" action="#{supervisorModel.logout()}" styleClass="btn btn-outline-light btn-sm mt-2"/>
+                </h:form>
+            </div>
+            <div class="col-12 col-sm col-md mx-0 pl-0" id="content">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light mx-0" >
+                    <div id="sideIcon" class="bg-dark">
+                        <i class="fas fa-ellipsis-v mx-2 text-light"></i>
+                    </div>
+                    <span class="navbar-brand mr-0">Prison Management</span>
+                </nav>
+                <ui:insert name="myContent"/>
+            </div>
+        </div>
+        <div>
+            <div class="bg-dark text-white text-center fixed-bottom">&copy; aristide</div>
+        </div>
+        <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
+        <h:outputScript name="fontawesome/js/all.js"/>
+        <script type="text/javascript">
+            $("#guardC").hide();
+            $("#prisonerC").hide();
+            $("#visitorC").hide();
+            $("#sideIcon").click(function () {
+                $("#side").toggle();
+            });
+            $("#prisoner").click(function (){
+                $("#prisonerC").toggle();
+                $("#guardC").hide();
+                $("#visitorC").hide();
+            });
+            $("#guard").click(function (){
+                $("#guardC").toggle();
+                $("#prisonerC").hide();
+                $("#visitorC").hide();
+            });
+            $("#visitor").click(function (){
+                $("#visitorC").toggle();
+                $("#prisonerC").hide();
+                $("#guardC").hide();
+            });
+        </script>
+    </h:body>
+</html>

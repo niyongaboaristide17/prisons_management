@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+        <h:outputScript name="jquery-3.5.1.js"/>
+    </h:head>
+    <h:body>
+        <ui:decorate template="supervisorLayout.xhtml">
+            <ui:define name="myContent">
+                <h:form enctype="multipart/form-data">
+                    <div class="row mt-2">
+                        <div class="col col-sm col-md"></div>
+                        <div class="col-10 col-sm-8 col-md-4">
+                            <h3>Add Prisoner</h3>
+                            <h:messages/>
+                            <div class="form-group">
+                                <h:inputText value="#{prisonerModel.prisoner.prisonerName}" styleClass="form-control" a:placeholder="Full name"/>
+                            </div>
+                            #{prisonerModel.prisoner.profilePicture}
+                            <label>Choose Profile Image</label>
+                            <div class="form-group">
+                                <h:inputFile value="#{prisonerModel.uploadedFile}">
+                                    <f:validator validatorId="fileUploadValidator"/>
+                                </h:inputFile>
+                                <h:commandButton value="upload" class="btn btn-outline-dark btn-sm" action="#{prisonerModel.upload()}"/>
+                            </div>
+                            <div class="form-group">
+                                <h:inputText value="#{prisonerModel.prisoner.crime.crimeName}" styleClass="form-control form-control-sm" a:placeholder="crime name"/>
+                            </div>
+                            <div class="form-group">
+                                <h:inputTextarea value="#{prisonerModel.prisoner.crime.crimeDetails}" styleClass="form-control form-control-sm" a:placeholder="crime details"/>
+                            </div>
+                            <div class="form-group">
+                                <h:inputText value="#{prisonerModel.prisoner.cellNumber}" styleClass="form-control form-control-sm" a:placeholder="cell number">
+                                    <!--<f:validateLongRange minimum="1" maximum="2000"/>-->
+                                    <f:convertNumber integerOnly="true"/>
+                                </h:inputText>
+                            </div>
+                            <div class="form-group">
+                                <h:inputText value="#{prisonerModel.prisoner.releaseDate}" styleClass="form-control form-control-sm" a:placeholder="dd/MM/yyyy">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:inputText>
+                            </div>
+                            <h:commandButton value="Add Prisoner" class="btn btn-block btn-dark btn-sm" action="#{prisonerModel.addPrisoner(superv.prison.prisonCode)}"/>
+                        </div>
+                        <div class="col col-sm col-md"></div>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:decorate>
+        <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
+    </h:body>
+</html>

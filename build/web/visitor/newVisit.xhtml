@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+        <h:outputScript name="jquery-3.5.1.js"/>
+        <h:outputStylesheet name="fontawesome/css/all.css"/>
+        <style>
+            .anyClass {
+                height:150px;
+                overflow-y: scroll;
+            }
+        </style>
+    </h:head>
+    <h:body>
+
+        <ui:decorate template="visitorLayout.xhtml">
+            <ui:define name="myContent">
+
+                <div class="row mb-5">
+                    <div class="col col-sm col-md card mt-4 mx-4 py-2">
+                        #{visito.visitorName}
+                        <h3>NEW VISIT SCHEDULE</h3>
+
+                        <h:form>
+                            <diV class="form-group">
+                                <label>Visit on</label>
+                                <h:inputText styleClass="form-control" value="#{prisonerVisitorModel.prisonerVisitor.visitOn}" a:placeholder="dd/MM/yyyy">
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                </h:inputText>
+                            </diV>
+                            <diV class="form-group">
+                                <h:inputText styleClass="form-control" value="#{prisonerVisitorModel.prisonerName}" id="search" a:placeholder="search prisoner">
+                                    <f:ajax event="keyup" listener="#{prisonerVisitorModel.searchListener()}" render="pri"/>
+                                </h:inputText>
+                            </diV>
+                            <h:panelGroup id="pri" styleClass="py-2">
+                                
+                                <p:dataTable value="#{prisonerVisitorModel.prisoners}" var="prisoner">
+                                    <p:column headerText="Picture">
+                                        <h:graphicImage class="rounded" width="50" height="auto" value="/resources/prisonerprofileImages/#{prisoner.profilePicture}"/>
+                                    </p:column>
+                                    <p:column headerText="Name">
+                                        <h:outputText value="#{prisoner.prisonerName}" />
+                                    </p:column>
+                                    <p:column headerText="">
+                                        <p:commandButton value="request visit" class="btn btn-dark" action="#{prisonerVisitorModel.scheduleVisit(prisoner.prisonerId, visito.vistorId)}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:panelGroup>
+                        </h:form>
+                    </div>
+                </div>
+
+            </ui:define>
+        </ui:decorate>
+        <h:messages/>
+        <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
+        <h:outputScript name="fontawesome/js/all.js"/>
+    </h:body>
+</html>

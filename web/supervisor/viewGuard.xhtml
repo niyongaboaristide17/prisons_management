@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+        <h:outputScript name="jquery-3.5.1.js"/>
+    </h:head>
+    <h:body>
+        <ui:decorate template="supervisorLayout.xhtml">
+            <ui:define name="myContent">
+                <div class="container">
+                    #{superv.prison.prisoners.size()}
+                    <table class="table">
+                        <thead class="bg-dark text-light">
+                            <tr>
+                                <th>GUARD ID</th>
+                                <th>NAME</th>
+                                <th>SUPERVISOR</th>
+                                <th>STATUS</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ui:repeat value="#{superv.prison.guards}" var="guard">
+
+                                <tr class="#{guard.supervisor.username != guard.username ? 'bg-light text-dark':'bg-white text-dark'}">
+                                    <td>#{guard.guardId}</td>
+                                    <td>#{guard.name}</td>
+                                    <td class="#{superv.username == guard.supervisor.username ? 'bg-success text-light':'bg-white text-dark'}">#{guard.supervisor.username}</td>
+                                    <td>#{guard.status}</td>
+                                    <td>
+                                        <h:panelGroup rendered="#{guard.supervisor.username == guard.username}">
+                                            SUPERVISOR
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{guard.supervisor.username != guard.username}">
+                                            <h:form>
+                                                <!--<h:commandButton styleClass="btn btn-danger mr-1 my-1" value="DELETE"/>-->
+                                                <h:commandButton styleClass="btn btn-dark mr-1 my-1" value="UPDATE"/>
+                                            </h:form>
+                                        </h:panelGroup>
+                                    </td>
+                                </tr>
+
+                            </ui:repeat>
+                        </tbody>
+                    </table>
+
+                </div>
+            </ui:define>
+        </ui:decorate>
+        <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
+    </h:body>
+</html>
+
