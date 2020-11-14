@@ -7,6 +7,7 @@ package com.prisons_management.dao;
 
 import com.prisons_management.domain.Prison;
 import com.prisons_management.domain.Prisoner;
+import com.prisons_management.domain.PrisonerStatus;
 import com.prisons_management.domain.Supervisor;
 import java.util.List;
 import org.hibernate.Query;
@@ -42,4 +43,19 @@ public class PrisonerDao {
         session.close();
         return a;
     }
+    
+    public static String updateStatus(String pId){
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery("UPDATE Prisoner P SET P.prisonerStatus = :ps where P.prisonerId = :pid");
+        q.setParameter("pid", pId);
+        q.setParameter("ps", PrisonerStatus.RELEASED);
+        q.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        return "Status Updated";
+        
+    }
+    
 }

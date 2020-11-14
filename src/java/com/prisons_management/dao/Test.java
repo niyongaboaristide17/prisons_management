@@ -5,6 +5,8 @@
  */
 package com.prisons_management.dao;
 
+import com.prisons_management.domain.Adminstrator;
+import com.prisons_management.domain.Prison;
 import com.prisons_management.domain.Prisoner;
 import com.prisons_management.domain.PrisonerVisitor;
 import com.prisons_management.domain.Visitor;
@@ -32,30 +34,30 @@ public class Test {
 //            System.out.println(supervisor.getName());
 //        }
 //
-//        Prison p = new Prison("MAGERAGERE", 1000);
+//        Prison p = new Prison("RIRIMA", 500);
 //        System.out.println(PrisonDao.createPrison(p));
 
-//        Adminstrator a = new Adminstrator();
-//        a.setUsername("aristide");
-//        a.setPassword("pass");
-//        Prison p = new Prison();
-//        p.setPrisonCode("PR1d9c91a4ac764d1ba69e3c51b1ef2614");
-//        a.setPrison(p);
-//        System.out.println(AdminstratorDao.createAdmin(a));
+        Adminstrator a = new Adminstrator();
+        a.setUsername("niyongabo");
+        a.setPassword("pass");
+        Prison p = new Prison();
+        p.setPrisonCode("PR96e56460bb854d52add3ff89e5964d35");
+        a.setPrison(p);
+        System.out.println(AdminstratorDao.createAdmin(a));
         
 //        Adminstrator a = AdminstratorDao.singleAdmin("niyongabo", "pass");
 //        
 //        System.out.println(a.getUsername()+" "+a.getPassword());
 
 
-        PrisonerVisitor p = new PrisonerVisitor();
-        p.setPrisoner(new Prisoner("INMATE620559e773c64120860747f6acffa190"));
-        p.setVisitor(new Visitor("VZTe5dd220f3299440b8e4d2b596257bd14"));
-        p.setVisitOn(new Date());
+//        PrisonerVisitor p = new PrisonerVisitor();
+//        p.setPrisoner(new Prisoner("INMATE620559e773c64120860747f6acffa190"));
+//        p.setVisitor(new Visitor("VZTe5dd220f3299440b8e4d2b596257bd14"));
+//        p.setVisitOn(new Date());
         
         
 
-        String msg = PrisonerVisitorDao.createVisit(p);
+//        String msg = PrisonerVisitorDao.createVisit(p);
 
     }
 }

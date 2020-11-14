@@ -8,6 +8,7 @@ package com.prisons_management.model;
 import com.prisons_management.dao.GuardDao;
 import com.prisons_management.domain.GuardStatus;
 import com.prisons_management.domain.Prison;
+import com.prisons_management.domain.PrisonerVisitor;
 import com.prisons_management.domain.Supervisor;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -99,6 +100,8 @@ public class SupervisorModel {
     }
     public String logout(){
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "/supervisorLogin.xhtml?faces-redirect=true";
+        return "/index.xhtml?faces-redirect=true";
     }
+    
+    
 }

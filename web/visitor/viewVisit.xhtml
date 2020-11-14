@@ -1,12 +1,62 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+        <h:outputScript name="jquery-3.5.1.js"/>
+        <h:outputStylesheet name="fontawesome/css/all.css"/>
+        <style>
+            .anyClass {
+                height:150px;
+                overflow-y: scroll;
+            }
+        </style>
     </h:head>
     <h:body>
-        Hello from Facelets
+
+        <ui:decorate template="visitorLayout.xhtml">
+            <ui:define name="myContent">
+
+                <div class="p-2">
+                    <table border="1" class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>visit Id</th>
+                                <th>Prison</th>
+                                <th>Prisoner name</th>
+                                <th>Prisoner Id</th>
+                                <th>Request on</th>
+                                <th>Visit on</th>
+                                <th>Visit Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ui:repeat value="#{prisonerVisitorModel.prisonerVisitors(visito.vistorId)}" var="pv">
+                                <tr>
+                                    <td>#{pv.visitId}</td>
+                                    <td>#{pv.prisoner.prison.prisonName}</td>
+                                    <td>#{pv.prisoner.prisonerName}</td>
+                                    <td>#{pv.prisoner.prisonerId}</td>
+                                    <td>#{pv.requestedOn}</td>
+                                    <td>#{pv.visitOn}</td>
+                                    <td>#{pv.visitStatus}</td>
+                                </tr>
+                            </ui:repeat>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </ui:define>
+        </ui:decorate>
+        <h:messages/>
+        <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
+        <h:outputScript name="fontawesome/js/all.js"/>
     </h:body>
 </html>
-

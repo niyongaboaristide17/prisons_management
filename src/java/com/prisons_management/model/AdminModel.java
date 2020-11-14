@@ -6,9 +6,16 @@
 package com.prisons_management.model;
 
 import com.prisons_management.dao.AdminstratorDao;
+import com.prisons_management.dao.PrisonerDao;
 import com.prisons_management.domain.Adminstrator;
+import com.prisons_management.domain.Prisoner;
+import com.prisons_management.domain.PrisonerStatus;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 /**
@@ -16,7 +23,7 @@ import javax.faces.context.FacesContext;
  * @author aristide
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class AdminModel {
 
     /**
@@ -59,7 +66,19 @@ public class AdminModel {
     
     public String logout(){
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "/adminLogin.xhtml?faces-redirect=true";
+        return "/index.xhtml?faces-redirect=true";
     }
+    
+    public List<Prisoner> prisonersAll(int id){
+        List<Prisoner> l = new ArrayList<>();
+        for (Prisoner prisoner : AdminstratorDao.singleAdminById(id).getPrison().getPrisoners()) {
+            if (prisoner.getPrisonerStatus() == PrisonerStatus.JAILED) {
+                l.add(prisoner);
+            }
+        }
+        return l;
+    }
+    
+    
     
 }

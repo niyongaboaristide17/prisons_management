@@ -4,8 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/model/AdminModel.java</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/domain/Visitor.java</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/web/supervisor/manage-visits.xhtml</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/dao/PrisonerVisitorDao.java</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/domain/VisitStatus.java</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/filter/VisitorFilter.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/domain/GuardStatus.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/web/admin/addSupervisor.xhtml</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/web/supervisorLogin.xhtml</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/utilities/EmailHandler.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/model/GuardModel.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/web/index.xhtml</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/web/supervisor/viewGuard.xhtml</file>
@@ -13,6 +20,7 @@
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/domain/Adminstrator.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/dao/PrisonerDao.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/model/PrisonModel.java</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/filter/AdminFilter.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/web/supervisor/viewPrisoner.xhtml</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/web/visitorLogin.xhtml</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/dao/GuardDao.java</file>
@@ -21,17 +29,23 @@
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/domain/Crime.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/web/admin/adminLayout.xhtml</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/web/supervisor/addGuard.xhtml</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/domain/PrisonerVisitor.java</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/domain/PrisonerStatus.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/model/SupervisorModel.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/dao/Test.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/dao/AdminstratorDao.java</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/web/admin/managePrisoners.xhtml</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/web/supervisor/addPrisoner.xhtml</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/model/VisitorModel.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/hibernate.cfg.xml</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/web/adminLogin.xhtml</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/utilities/Util.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/domain/Prison.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/web/supervisor/supervisorLayout.xhtml</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/domain/Supervisor.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/domain/Guard.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/domain/Prisoner.java</file>
+            <file>file:/home/aristide/NetBeansProjects/prisons_management/src/java/com/prisons_management/model/PrisonerVisitorModel.java</file>
             <file>file:/home/aristide/NetBeansProjects/prisons_management/web/visitorCreateAccount.xhtml</file>
         </group>
     </open-files>

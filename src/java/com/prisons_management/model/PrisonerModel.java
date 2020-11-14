@@ -8,10 +8,12 @@ package com.prisons_management.model;
 import com.prisons_management.dao.PrisonerDao;
 import com.prisons_management.domain.Prison;
 import com.prisons_management.domain.Prisoner;
+import com.prisons_management.domain.PrisonerStatus;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -99,7 +101,31 @@ public class PrisonerModel {
     }
     
     public List<Prisoner> prisonerList(String prisonCode){
+        
         return PrisonerDao.allPrisonerInAprison(prisonCode);
+    }
+    
+    public List<Prisoner> prisonerListIn(String prisonCode){
+        List<Prisoner> l = new ArrayList<>();
+        for (Prisoner p : PrisonerDao.allPrisonerInAprison(prisonCode)) {
+            if (p.getPrisonerStatus() == PrisonerStatus.JAILED) {
+                l.add(p);
+            }
+        }
+        return l;
+    }
+    
+    public String releasePrisoner(String prisonerId){
+        FacesContext fc = FacesContext.getCurrentInstance();
+        try {
+            String msg = PrisonerDao.updateStatus(prisonerId);
+            fc.addMessage(null, new FacesMessage(msg));
+            System.out.println(prisonerId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fc.addMessage(null, new FacesMessage("Something went wrong"));
+        }
+        return "/admin/managePrisoners.xhtml?faces-redirect=true";
     }
 
 }

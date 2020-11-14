@@ -18,11 +18,11 @@
             <h:form styleClass="form-inline">
                 <span class="badge badge-light text-dark">#{visito.username}</span>
                 <span class="text-light">&nbsp;&nbsp;</span>
-                <h:commandButton rendered="#{not empty admin}" action="#{adminModel.logout()}" value="logout" styleClass="btn btn-outline-light"/>
+                <h:commandButton  action="#{adminModel.logout()}" value="logout" styleClass="btn btn-outline-light"/>
             </h:form>
         </nav>
         <div class="row">
-            <div class="col-12 col-md-4 col-sm bg-dark">
+            <div class="col-12 col-md-2 col-sm bg-dark">
                 <h:form>
                     <div class="form-group pl-2">
                         <h:commandLink styleClass="btn btn-light btn-block" value="schedule visit" action="/visitor/newVisit.xhtml?faces-redirect=true"/>
@@ -32,7 +32,7 @@
                     </div>
                 </h:form>
             </div>
-            <div class="col-12 col-md-8 col-sm">
+            <div class="col-12 col-md-10 col-sm">
                 
                 <ui:insert name="myContent"/>
             </div>

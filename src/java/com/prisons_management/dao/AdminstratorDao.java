@@ -33,4 +33,14 @@ public class AdminstratorDao {
         return a;
     }
     
+    public static Adminstrator singleAdminById(int id){
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query q = session.createQuery("FROM Adminstrator A WHERE adminId = :aid");
+        q.setParameter("aid", id);
+        Adminstrator a = (Adminstrator) q.uniqueResult();
+        session.close();
+        return a;
+    }
+    
 }
