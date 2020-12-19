@@ -33,7 +33,7 @@ public class EmailHandler {
         Session session = Session.getDefaultInstance(props,
                 new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("bitlabgen@gmail.com", "@Backend1998");
+                return new PasswordAuthentication("gmailsenderemail", "senderpassword");
             }
         });
 
